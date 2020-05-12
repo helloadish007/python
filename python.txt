@@ -1,0 +1,339 @@
+1.LCM AND HCF 
+----------------------------------------
+
+x=a=int(input("FIRST NUMBER "))
+y=b=int(input("SECOND NUMBER "))
+while(y):
+    x,y=y,x%y
+hcf=x
+print("hcf is ",hcf)
+print("lcm is ",(a*b)/hcf)
+
+OUT:
+FIRST NUMBER 2
+SECOND NUMBER 4
+hcf is  2
+lcm is  4.0
+--------------------------------------
+
+2.write a method which removes any given character fom a string?
+---------------------------------------------
+
+i=k=input("enter the string ")
+j=input("enter the string to be deleted ")
+​
+print(i.replace(j,""))
+O/P:
+enter the string cheat
+enter the string to be deleted e
+chat
+--------------------------------------------
+3.palindrome:
+
+t=int(input())
+for z in range(t):
+    n=input()
+    if(n[::-1]==n):
+        print("palindrome")
+    else:
+        print("not a palindrome")
+-----------------------------------------------
+4.reverse a two digit nummber such that it should not contain any zeroes in ones and tenths places
+---------------------------------------------------------
+n=int(input())
+if(int(str(n)[:1])==0 or int(str(n)[1:])==0):
+    print("sry")
+else:
+    print(str(n)[::-1])
+-----------------------------------------------------------
+5.convert binary to decimal
+-----------------------------------------------------------
+x=int(input(),2)
+print("decimal equivalent of {} is {}".format(k,x))
+------------------------------------------------------------
+6.print alternate odd and even sum of digits
+------------------------------------------------------------
+k=input()
+x=list(k)
+n=list(map(int,x))
+print("the summ of odd indices is {}".format(sum(n[::2])))
+print("the summ of even indices is {}".format(sum(n[1::2])))
+
+--------------------------------------------------------------
+7.sexy prime
+--------------------------------------------------------------
+import math
+l=[]
+x=int(input())
+y=int(input())
+for i in range(x,y+1):
+    if (i>1):
+        for j in range(2,int(math.sqrt(i))+1):
+            if(i%j==0):
+                break
+        else:
+            l.append(i)
+for i in range(len(l)):
+    j=i+1
+    for j in range(len(l)):
+        if(l[j]-l[i]==6):
+            print("({},{})".format(l[i],l[j]))
+------------------------------------------------------------------
+8.Multiply  the other elements of a list :
+--------------------------------------------------------------------
+b=[1,2,3,4,5]
+l=[]
+def f1(a):
+    l=[]
+    def mt(myList) : 
+        result = 1
+        for x in myList: 
+             result = result * x  
+        return result  
+    for i in range(len(a)):
+        if (i==0):
+            l.append(mt(a[1:]))
+        else:
+            l.append(mt(a[0:i])*mt(a[i+1:]))
+    return l
+
+
+f1(b)
+----------------------------------------------------------------------
+9.Fibonacci series 
+-----------------------------------------------------------------------
+t=int(input())
+for t in range(t):
+    n=int(input())
+    n1=0
+    n2=1
+    c=0
+    l=[]
+    if n==1:
+        print(n2)
+    else:
+        while(c<n):
+            r=n1+n2
+            n1=n2
+            n2=r
+            c+=1
+            l.append(n1)
+        print(' '.join(map(str,l)))
+        l.clear()
+        
+------------------------------------------------------------------------
+10.Print numbers from 1 to 100 ,without using loops?
+------------------------------------------------------------------------
+def h(n):
+    if(n>0):
+        h(n-1)
+        print(n)
+h(100)
+--------------------------------------------------------------------------
+11.fizzbuzz algo:
+--------------------------------------------------------------------------
+n=int(input())
+if n%15==0:
+    print("fizzbuzz")
+elif n%3==0:
+    print("fizz")
+elif n%5==0:
+    print("buzz")
+else:
+    print(n)
+----------------------------------------------------------------------------
+
+12.Tower of hanoi:
+----------------------------------------------------------------------------
+n=int(input())
+a=int(input())
+b=int(input())
+c=int(input())
+def toh(n,a,b,c):
+    if n>0:
+        toh(n-1,a,c,b)
+        print("move a disc from {} to {}".format(a,c))
+        toh(n-1,b,a,c)
+toh(n,a,b,c)
+--------------------------------------------------------------------------
+13.balanced paranthesis
+---------------------------------------------------------------------------
+def f1(s):
+  k=None
+  l=[']','}',')']
+  for i in s:
+    if i in l:
+      break
+    else:
+      k=s.count('(')==s.count(')') and s.count('{')==s.count('}') and s.count('[')==s.count(']')
+  if(k):
+    print("balanced")
+  else:
+    print("unbalanced")
+f1('(abc)[1[]')
+o/p:unbalanced
+    
+--------------------------------------------------------------------------------
+14.Find the number of factors for a given number
+---------------------------------------------------------------------------------
+
+n=int(input())
+l=[]
+for i in range(1,n+1):
+  if (n%i==0):
+    l.append(i)
+print(l)
+print("number of factors of {} is {}".format(n,len(l)))
+---------------------------------------------------------------------------------
+15.Matrix 90 degree rotation
+----------------------------------------------------------------------------------
+r=int(input())
+c=int(input())
+a=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+l=[[0 for i in range(c)] for i in range(r)]
+for i in range(len(a)):
+  a[i].reverse()
+for i in range(c):
+  for j in range(r):
+    l[j][i]=a[i][j]
+for i in range(len(l)):
+  print(l[i])
+------------------------------------------------------------------------------------
+16.Find the saddle point in a matrix----(min val in row = max value in column)
+-------------------------------------------------------------------------------------
+a=[[1,2,3],
+   [4,5,6],
+   [7,8,9]]
+
+l=[]
+s=[]
+c=int(input())
+r=int(input())
+for i in range(c):
+  for j in range(r):
+    l.append(a[j][i])
+  
+  for k in range(r):
+    if(max(l)==min(a[k])):
+      s.append(min(a[k]))
+      
+  l.clear()
+print(s)
+----------------------------------------------------------------------------------
+17.find the longest range?
+------------------------------------------------------------------------------------
+a=[0,3,1,4,5,6]
+hashtable={}
+bestrange=[]
+longestlength=0
+for i in a:
+    hashtable[i]=True
+for i in a:
+    if not hashtable[i]:
+        continue
+    hashtable[i]=False
+    currentlength=1
+    left=i-1
+    right=i+1
+    while left in hashtable :
+        hashtable[left]=False
+        currentlength+=1
+        left-=1
+        
+    while right in hashtable:
+        hashtable[right]=False
+        currentlength+=1
+        right+=1
+        
+    if currentlength>longestlength:
+        longestlength=currentlength
+        bestrange=[left+1,right-1]
+    
+print(bestrange)
+--------------------------------------------------------------------------------------------------------
+18.DIAGONAL DIFFERENCE
+-----------------------------------------------------------------------------------------------------
+n=int(input())
+a=[]
+s1=0
+s2=0
+j=n-1
+for i in range(n):
+    a.append(list(map(int,input().split())))
+for i in range(n):
+    print(a[i])
+    s1+=a[i][i]
+    s2+=a[i][j]
+    j-=1
+r=s1-s2
+if(r<0):
+  print(-r)
+else:
+  print(r)
+---------------------------------------------------------------------------------------------
+19.COMPAIRING STRINGS AND NUMBERS USING MAX():
+--------------------------------------------------------------------------------------------
+l=['1','100','2']
+print(max(l))
+l=['1','100','2']
+max(l,key=lambda c: int(c))
+---------------------------------------------------------------------------------------------
+20.PERMUTATIONS
+---------------------------------------------------------------------------------------------
+def perm(a):
+    p=[]
+    f(0,a,p)
+    return p
+def f(i,a,p):
+    if i==len(a)-1:
+        p.append(a[:])
+    else: 
+        for j in range(i,len(a)):
+            swap(a,i,j)
+            f(i+1,a,p)
+            swap(a,i,j)
+def swap(a,i,j):
+    a[i],a[j]=a[j],a[i]
+perm([1,2,3])
+--------------------------------------------------------------------------------
+21.BALANCED PARANTHESIS IN ORDER:
+------------------------------------------------------------------------------------
+def balanced_paranthesis(s):
+    o="({["
+    c=")}]"
+    matching={")":"(","}":"{","]":"["}
+    stack=[]
+    for i in s:
+        if i in o:
+            stack.append(i)
+        elif i in c:
+            if len(stack)==0:
+                return False
+            elif stack[-1]==matching[i]:
+                stack.pop()
+            else:
+                return False
+    return len(stack)==0
+ -------------------------------------------------------------------------------------
+ 22.
+ -------------------------------------------------------------------------------------
+
+numerator=int(input())
+denominator=int(input())
+sign = '-' if numerator * denominator < 0 else ''
+number, rem = divmod(abs(numerator), abs(denominator))
+seen = {}
+tail = ''
+while rem > 0:
+    if rem in seen:
+        break
+    seen[rem] = len(tail)
+    n, rem = divmod(rem * 10, abs(denominator))
+    tail += str(n)
+    result = sign + str(number) + '.'
+    if rem <= 0:
+        result += tail
+    else:
+        print("tail of seen[rem] is {}".format(tail[:seen[rem]]))
+        result += tail[:seen[rem]] + '(' + tail[seen[rem]:] + ')'
+    print(result.rstrip('.'))
