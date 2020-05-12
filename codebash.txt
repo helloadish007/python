@@ -1,0 +1,282 @@
+Write a program to translate an english sentence in to pig latin. Pig latin is a language game of alterations played in english. The purpose is to obfuscate the language. It is a form of encoding. You can learn more about it on wikipedia. However, for the purpose of this exercise, the rules of translation are changed slightly and are as follows:
+a) Each word of the sentence is to be translated
+b) If the word starts with a vowel, then add ‘ay’ to the end of the word
+c) If the word starts with a consonant, then move it to the end of the word and add ‘ay’
+
+INPUT:
+
+    First line will contain T, number of testcases. Then the testcases follow.
+    Each test case will have a single string S
+
+OUTPUT:
+
+    For each test case, output a single result string.
+
+SAMPLE INPUT
+
+2
+apple is not red
+The sky is blue
+
+SAMPLE OUTPUT
+
+appleay isay otnay edray
+heTay kysay isay luebay
+
+
+
+code:
+n=int(input())
+for z in range(n):
+    s=str(input()).split(' ')
+  
+    for k in range(len(s)):
+        i = s[k]
+
+        
+        if i[0] in ['a', 'e', 'i', 'o', 'u','A','E','I','O','U']:
+            s[k] = i+'ay'
+        else:
+            s[k]=i[1:]+i[0]+'ay'
+    print(' '.join(s))
+    s.clear()
+---------------------------------------------------------------------------------------------------------------------
+
+2.Phonetic Alphabet
+Max. Marks: 40
+
+Write a program that will convert a text string into ‘phonetic alphabet’ and back. The phonetic
+alphabet is used when spelling words out. The list below is the standard NATO phonetic alphabet for
+English. Any numbers should be printed out as words. The first input to the program will be either
+‘english’ or ‘phonetic’ to indicate whether the following text is in english or in phonetic alphabet. The
+conversion should happen accordingly
+
+
+Example: PYTHON 27 ----> Papa Yankee Tango Hotel Oscar November Two Seven}
+
+INPUT:
+
+    First line will contain T, number of testcases. Then the testcases follow.
+    Each test case will have 2 lines. The first line will be used to indicate whether the input is in english or phonetic alphabet.
+    The second line will contain the string S to be converted.
+
+OUTPUT:
+
+    For each test case, output a single result string.
+
+ 
+
+* The spellings of the phonetic alphabet should be exactly the same as the list in the question. ie. The first letter of each word should be capitalized.
+* Only numbers and alphabets will be used in test cases. No special characters.
+* Note that, in English, only the frst letter is capital and in Phonetics, the first letter of each word is capitalized.
+SAMPLE INPUT
+
+2
+english
+Python27
+phonetic
+Papa Yankee Tango Hotel Oscar November Two Seven
+
+SAMPLE OUTPUT
+
+Papa Yankee Tango Hotel Oscar November Two Seven
+Python27
+
+code:
+n=int(input())
+l=[]
+dicto={
+"A":"Alpha","B":"Bravo","C":"Charlie","D":"Delta","E":"Echo","F":"Foxtrot","G":"Golf","H":"Hotel","I":"India","J":"Juliet","K":"Kilo","L":"Lima","M":"Mike",
+"N":"November","O":"Oscar","P":"Papa","Q":"Quebac","R":"Romeo","S":"Sierra","T":"Tango","U":"Uniform","V":"Victor","W":"Whiskey","X":"Xray","Y":"Yankee",
+"Z":"Zulu","0":"Zero","1":"One","2":"Two","3":"Three","4":"Four","5":"Five","6":"Six","7":"Seven","8":"Eight","9":"Nine"}
+for i in range (n):
+	a=input()
+	if (a=="english"):
+		k=input().upper()
+		print(" ".join(map(dicto.get,k)))
+	elif (a=="phonetic"):
+		s=input().split(" ")
+		for g in s:
+			for j,k in dicto.items():
+				if (g==k):
+					l.append(j)
+		print("".join(l).capitalize())
+		l.clear()
+------------------------------------------------------------------------------------------------
+
+3.Given a string S and an integer n, if n is positive rotate S, n times to the right  (that is characters from end
+of S are placed at the beginning), and if n is negative rotate S, n times to the left (that is characters from the
+front of S go to the end of S).
+
+INPUT:
+
+    First line will contain T, number of testcases. Then the testcases follow.
+    Each test case will have two space seperated values, the string S and integer n
+
+OUTPUT:
+
+    For each test case, output a single result string.
+
+SAMPLE INPUT
+
+3
+abcdefgh -3 
+apple 11
+coding 4
+
+SAMPLE OUTPUT
+
+defghabc
+eappl
+dingco
+
+
+t=int(input())
+l=[]
+for z in range(t):
+    l=input().split(' ')
+    s=l[0]
+    n=int(l[1])
+    if(n<=0):
+        print(s[-n:]+s[:-n])
+    else:
+        g=len(s)
+        f=len(str(n))
+        if(len(s)<n):
+            print(s[(f*g-n):]+s[0:(f*g-n)])
+        else:
+            print(s[(g-n):]+s[0:(g-n)])
+	    
+----------------------------------------------------------------------------------------------------------
+            
+4.Credit Card Validity
+Max. Marks: 50
+This problem is no longer available for practice. Apology for any inconvenience!
+
+You may know that credit card numbers contain several pieces of information for performing validity tests. For example, Visa card numbers always begin with 4, and a valid Visa card number also passes a digit-sum test known as the Luhn checksum algorithm. Luhn’s algorithm states that if you sum the digits of the number in a certain way, the total sum must be a multiple of 10 for a valid Visa number. Systems that accept credit cards perform a Luhn test before contacting the credit card company for final verification. This lets the company block fake or mistyped credit card numbers.
+
+The algorithm for summing the digits is the following. Consider each digit of the credit card to have a zero-based index: the first is at index 0, and the last is at index 15. Start from the rightmost digit and process each digit one at a time. For digits at even-numbered indexes (the 14th digit, 12th digit, etc.), simply add that digit to the cumulative sum. For digits at odd-numbered indexes (the 15th, 13th, etc), double the digit’s value, then if that doubled value is less than 10, add it to the sum. If the doubled number is 10 or greater, add each of its digits separately into the sum.
+
+The following pseudocode describes the Luhn algorithm to sum the digits:
+
+sum = 0.
+for each digit of credit card number, starting from right,
+    if the digit’s index is even,
+        add the digit to sum
+    else,
+        double the digit’s value
+        if the doubled value is less than 10,
+            add the doubled value to sum
+        else,
+            split the doubled value into its two digits
+            add the first digit to sum
+            add the second digit to sum
+
+ 
+
+4111111111111111 and 4408041274369853 are example credit card numbers that pass the Luhn algorithm. The following figure shows the algorithm summing the latter number in detail.
+
+An example checksum using the Luhn algorithm:  
+
+Write a program where the user can type in a credit card number and receive a message stating whether the number is valid or not.
+
+INPUT:
+
+The first line of the input contains T, the number of test cases.
+
+T lines follow. Each line contains a credit card number to be verified.
+
+OUTPUT:
+
+For each test case, print VALID or INVALID.
+SAMPLE INPUT
+
+2
+4111111111111111
+4408041274369853
+
+SAMPLE OUTPUT
+
+VALID
+VALID
+
+code:
+def luhn(card_number):
+    def digits_of(n):
+        return [int(d) for d in str(n)]
+    digits = digits_of(card_number)
+    odd_digits = digits[-1::-2]
+    even_digits = digits[-2::-2]
+    csum = 0
+    csum += sum(odd_digits)
+    for d in even_digits:
+        csum += sum(digits_of(d*2))
+    return csum % 10
+
+def valid(card_number):
+    return luhn(card_number) == 0
+t=int(input())
+for z in range(t):
+    N=int(input())
+    result = valid(N)
+    if(result==True):
+        print("VALID")
+    else:
+        print("INVALID")
+	
+---------------------------------------------------------------------------------------------
+
+5.The denominations of Indian currency are:
+1, 2, 5, 10, 20, 50, 100 200, 500, 2000.
+Given an amount N, print the least number of coins/notes that makeup N. Start with the highest denomination.
+
+INPUT:
+
+    First line will contain T, number of testcases. Then the testcases follow.
+    Each test case will have the amount N.
+
+OUTPUT:
+
+    For each test case, output a single number which is the least number of coins/notes that makeup N.
+
+ 
+SAMPLE INPUT
+
+3
+2100
+450
+12
+
+SAMPLE OUTPUT
+
+2
+3
+2
+
+Explanation
+
+                                                   Total coins/notes
+
+2100 = 1 x 2000 + 1 x 100                      2
+
+450 = 2 x 200 + 1 x 50                            3
+
+12 = 1 x 10 + 1 x 2                                  2     
+code:
+t=int(input())
+for z in range(t):
+    N=int(input())
+   
+    notes = [2000, 500, 200, 100, 
+                   50, 20, 10, 5,2,1]
+    c= [0, 0, 0, 0, 0, 
+                 0, 0, 0, 0,0] 
+    s=0
+    for i, j in zip(notes, c): 
+        if N >= i: 
+            j = N // i 
+            N = N - j * i
+            s+=j
+    print(s)
+    s=0
+
