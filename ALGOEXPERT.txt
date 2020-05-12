@@ -1,0 +1,82 @@
+1.TWO NUMBER SUM:
+======================================
+FIRST SOLUTION:O(N^2)TIME COMPLEXITY AND O(1) SPACE COMPLEXITY
+---------------------------------------------------------------
+def twosum(array,target):
+    l=[]
+    for i in range(len(array)-1):
+        firstnum=array[i]
+        for j in range(i+1,len(array)):
+            secondnum=array[j]
+            if (firstnum+secondnum==target):
+                l.append([firstnum,secondnum])
+        print(l)
+        l.clear()
+twosum([1,2,3,4],5)
+-----------------------------------------
+SECOND SOLUTION:O(N)TIME COMPLEXITY AND O(N) SPACE COMPLEXITY
+-------------------------------------------------------------
+def twosum1(array,target):
+    hashtable={}
+    for i in array:
+        if target-i in hashtable:
+            return [target-i,i]
+        else:
+            hashtable[i]=True
+    return[]
+twosum1([3,5,-4,8,11,1,-1,6],10)
+----------------------------------------------------------------
+THIRD SOLUTION:O(nlogn) time| O(1) space
+----------------------------------------------------------------
+def twosum2(array,target):
+    array.sort()
+    leftpointer=0
+    rightpointer=len(array)-1
+    while leftpointer<rightpointer:
+        currentsum=array[leftpointer]+array[rightpointer]
+        if(currentsum==target):
+            return [array[leftpointer],array[rightpointer]]
+        elif(currentsum<target):
+            leftpointer+=1
+        elif(currentsum>target):
+            rightpointer-=1
+    return []
+twosum2([3,5,-4,8,11,1,-1,6],10)
+==================================================================
+2.NTH FIBANOCCI
+===================================================================
+#o(2^n)time|o(n) space
+def fib(n):
+    if n==1:
+        return 0
+    elif n==2:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+    
+fib(5)
+--------------------------------------------
+#o(n)time|o(n)space
+def fib1(n):
+    memoize={1:0,2:1}
+    if n in memoize:
+        return memoize[n]
+    else:
+        memoize[n]=fib(n-1)+fib(n-2)
+        return memoize[n]
+fib1(5)
+----------------------------------------
+o(n)time|o(1)space
+def fib2(n):
+    a=[0,1]
+    counter=3
+    while counter<=n:
+        temp=a[0]+a[1]
+        a[0]=a[1]
+        a[1]=temp
+        counter+=1
+    return a[1] if n>1 else a[0]
+fib2(5)
+--------------------------------------------
+3.
+=================================================
