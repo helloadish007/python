@@ -1,0 +1,207 @@
+immediate smaller element:
+
+t=int(input())
+for z in range (t):
+    s=int(input())
+    l=input().split()
+    o=[]
+    y=len(l)-1
+    x=len(l)
+    for i in range(y):
+        if (int(l[i+1])<int(l[i])):
+            g=l[i+1]
+            o.append(g)
+        else:
+            o.append("-1")
+    o.append("-1")
+    print(" ".join(o))
+    o.clear()
+    
+    
+rotating an array
+
+t=int(input())
+for z in range (t):
+    s=int(input())
+    l=input().split()
+    d=int(input())
+    l1=[]
+    l2=[]
+    if(d<=len(l)):
+        for i in range(d):
+            l1.append(l[i])
+    for j in range(d,len(l)):
+        l2.append(l[j])
+    l2.extend(l1)
+    print(" ".join(l2))
+    l1.clear()
+    l2.clear()
+    
+    
+  leaders in an array:
+  
+  
+  t=int(input())
+for z in range (t):
+    s=int(input())
+    l=input().split()
+    o=[]
+    for i in range(len(l)):
+        for j in range(i+1,len(l)):
+            if(int(l[i])<=int(l[j])):
+                break
+       
+        if(j==len(l)-1):
+            o.append(l[i])
+    print(" ".join(o))
+    o.clear()
+    
+    reverse array in groups:
+    
+    
+    t=int(input())
+for z in range (t):
+    s=input().split()
+    l=input().split()
+    d=int(s[1])
+    l1=[]
+    l2=[]
+    t=[]
+    p=[]
+    for i in range(0,len(l),d):
+        l1.append(l[i:i+d])
+    for i in range(len(l1)):
+        l2.extend(l1[i][::-1])
+    print(" " .join(l2))
+    l1.clear()
+    l2.clear()
+    l.clear()
+    
+    
+   sort in specific order:
+   
+   
+   t=int(input())
+for z in range(t):
+    s=int(input())
+    l=input().split()
+    o=[]
+    e=[]
+    o1=[]
+    e1=[]
+    for i in range(len(l)):
+        if(int(l[i])%2==0):
+            e.append(l[i])
+        else:
+            o.append(l[i])
+    o.sort(key=int,reverse=True)
+    e.sort(key=int)
+    o.extend(e)
+    print(" ".join(o))
+
+
+find the fine:
+
+
+
+t=int(input())
+for z in range(t):
+    s=input().split()
+    l=input().split()
+    p=input().split()
+    o=[]
+    e=[]
+    tp=0
+    for i in range(len(l)):
+        if(int(l[i])%2==0):
+            e.append(i)
+        else:
+            o.append(i)
+    if(int(s[1])%2==0):
+        for i in range(len(o)):
+            tp=tp+int(p[int(o[i])])
+    else:
+          for i in range(len(e)):
+            tp=tp+int(p[int(e[i])])
+    print(tp)
+    o.clear()
+    l.clear()
+    e.clear()
+    tp=0
+    
+maximum of all subarrays of size k 
+    
+    t=int(input())
+for z in range(t):
+    s=input().split()
+    l=input().split()
+    n=len(l)
+    k=int(s[1])
+    o=[]
+    for i in range(n-k+1):
+        m=max(map(int,l[i:i+k]))
+        o.append(m)
+    print(" ".join(map(str,o)))
+    
+    
+ count distinct elements in every window
+ 
+ 
+ t=int(input())
+for z in range(t):
+    s=input().split()
+    l=input().split()
+    n=len(l)
+    k=int(s[1])
+    o=[]
+    for i in range(n-k+1):
+        m=len(set(l[i:i+k]))
+        o.append(m)
+    print(" ".join(map(str,o)))
+    
+    
+ reversing vowels in a string
+ 
+ t=int(input())
+v="aeiou"
+for z in range(t):
+    l=input()
+    s=list(l)
+    i=0
+    j=len(l)-1
+    while i<j:
+        if s[i].lower() not in v:
+            i+=1
+        elif s[j].lower() not in v:
+            j-=1
+        else:
+            s[i],s[j]=s[j],s[i]
+            i+=1
+            j-=1
+    print("".join(s))
+    
+  Reverse words in a string:
+  
+  t=int(input())
+for z in range(t):
+    l=input().split(".")
+    print('.'.join(l[-1::-1]))
+    l.clear()
+        
+            
+        
+    
+    
+        
+            
+        
+    
+        
+    
+    
+    
+    
+    
+
+        
+
