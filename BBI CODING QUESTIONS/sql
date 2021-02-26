@@ -1,0 +1,36 @@
+Server Address/Host Name: dbi-bc2020.cok3fwhxp8bt.us-west-2.rds.amazonaws.com 
+Port 3306 
+DB Name (Database Name) travel 
+User id bcuser 
+Password GajiNi1i
+
+
+CONNECTION ==> mysql -u bcuser -h  dbi-bc2020.cok3fwhxp8bt.us-west-2.rds.amazonaws.com  -P 3306 -D travel -p
+
+======================================================================================================================================================================================
+
+
+SQL QUERIES :
+=============
+
+
+1)select sum(case when Gender='M' then 1 else 0 end) as M,sum(case when Gender='F' then 1 else 0 end) as F,count(*) as totalcount from Passenger where distance>=600;
+
+2)select min(Price) from Price where Compartment='AC';
+
+3) select Passenger_Name from Passenger where Passenger_Name like 'S%';
+
+4)select Passenger.Passenger_Name,Passenger.Boarding_Station,Passenger.Destination_Station,Passenger.Compartment,Price.Price from Passenger inner join Price on Passenger.Distance=Price.Distance and Passenger.Compartment=Price.Compartment;
+
+5)select Passenger.Passenger_Name,Price.Price from Passenger inner join Price on Passenger.Distance=Price.Distance where Passenger.Compartment='Non-AC' and Price.Distance=1000;
+
+6)select distinct  (select Price.Price from Price join Passenger on Passenger.Distance=Price.Distance and Passenger.Compartment=Price.Compartment where Passenger.Boarding_Station='Mumbai' and Passenger.Destination_Station='Chennai')-(select Price.Price from Price join Passenger on Passenger.Distance=Price.Distance and Passenger.Compartment=Price.Compartment where Passenger.Boarding_Station='Mumbai' and Passenger.Destination_Station='Goa') as extra_cost from Passenger join Price on Passenger.Distance=Price.Distance and Passenger.Compartment=Price.Compartment;
+
+7) select Price.Price from Price join Passenger on Passenger.Distance=Price.Distance and Passenger.Compartment=Price.Compartment  where (Passenger.Boarding_Station='Bangalore' and Passenger.Destination_Station='Goa') and (Passenger.Compartment='AC' or Passenger.Compartment='Non-AC');
+
+
+8)select distinct Distance from Passenger;
+
+9)select Passenger_Name,(Distance *100/(select sum(Distance) from Passenger)) as distance_percentage  from Passenger;
+
+10)select count(Passenger_Name) from Passenger where Passenger_Name like '%a%';
